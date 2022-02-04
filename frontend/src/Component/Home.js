@@ -4,10 +4,8 @@ import useBuildTopicName from "../Hook/useBuildTopicName";
 import {NavLink} from "react-router-dom";
 
 export default function Home() {
-
     const getUserList = useGetUserList();
     const buildTopicName = useBuildTopicName();
-
     const [users, setUsers] = useState([]);
 
     useEffect(() => {

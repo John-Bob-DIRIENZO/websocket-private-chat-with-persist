@@ -20,7 +20,6 @@ export default function WebsocketReducer(state = false, action) {
 
             conn.onopen = (session) => {
                 Store.dispatch(addSession(session));
-                // session.publish('toto', ['tata']);
             }
 
             conn.open();

@@ -1,7 +1,5 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as autobahn from 'autobahn';
-import {useEffect, useState} from "react";
 import Login from "./Component/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import NeedAuth from "./Auth/NeedAuth";

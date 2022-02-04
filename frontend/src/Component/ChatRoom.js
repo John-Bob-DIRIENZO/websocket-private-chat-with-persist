@@ -35,12 +35,6 @@ export default function ChatRoom() {
         } else {
             console.log('wrong topic');
         }
-
-        // console.log('message : ' + args);
-
-        // console.log(event.topic);
-        // console.log(kwargs.sender)
-        // console.log(topic)
     }
 
     const handleChange = (e) => {
@@ -50,7 +44,13 @@ export default function ChatRoom() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const stringTopic = topic;
-        session.publish(stringTopic, [newMessage], {senderId: currentUserId, senderUsername: currentUserUsername});
+        session.publish(stringTopic,
+            [newMessage],
+            {
+                senderId: currentUserId,
+                senderUsername: currentUserUsername
+            }
+        );
         setMessages(prevState => [
             {
                 content: newMessage,
@@ -77,7 +77,15 @@ export default function ChatRoom() {
         });
 
         const stringTopic = topic;
-        session.subscribe(stringTopic, onEvent);
+        let subscription;
+        session.subscribe(stringTopic, onEvent)
+            .then((sub) => {
+                subscription = sub
+            });
+
+        return () => {
+            session.unsubscribe(subscription);
+        }
     }, [])
 
     return (

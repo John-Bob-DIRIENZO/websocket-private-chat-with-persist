@@ -44,11 +44,7 @@ export default function Login() {
                 dispatch(LoginAction(data));
                 dispatch(Connect(data));
             })
-            .then(() => {
-
-            })
             .then(() => navigate(from, {replace: true}));
-        ;
     }
 
     return (
