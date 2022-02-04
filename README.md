@@ -24,7 +24,7 @@ npm run start
 
 Puis, depuis l'intérieur du container Symfony
 ```shell
-cd project
+cd /var/www/project
 symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
 ```
