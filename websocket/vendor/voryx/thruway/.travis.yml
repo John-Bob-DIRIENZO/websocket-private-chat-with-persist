@@ -1,0 +1,28 @@
+language: php
+
+sudo: required
+
+services:
+    - docker
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4
+  - nightly
+
+matrix:
+  allow_failures:
+    - php: nightly
+
+before_install:
+    - export PATH=$HOME/.local/bin:$PATH
+
+before_script:
+    - sh tests/Crossbar/travis_install
+    - composer install
+
+script:
+    - php tests/TestServer.php 20 & vendor/bin/phpunit
+    - sh tests/Crossbar/run_tests
+
