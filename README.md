@@ -4,16 +4,14 @@ Le but ici était d'utiliser les Websockets et le protocole
 WAMP pour créer un chat privé, avec un système d'auth et de
 pérennisation des messages en DB
 
-Le système est donc composé des briques suivantes : 
+Le système est donc composé des briques suivantes :
 - Un back Symfony qui va gérer l'auth des users et l'enregistrement des messages en DB
 - Un front en React qui prend la charge d'être un terminal de gestion de messages
 - Un serveur Websocket qui sert juste de Broker et distribue les messages entre les fronts
 
 Pour lancer le projet faut
 ```shell
-cd project
-composer install
-cd ../websocket
+cd websocket
 composer install
 cd ..
 docker-compose up -d
@@ -25,6 +23,8 @@ npm run start
 Puis, depuis l'intérieur du container Symfony
 ```shell
 cd /var/www/project
+composer install
+symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
 ```
