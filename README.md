@@ -22,9 +22,10 @@ npm install
 npm run start
 ```
 
-Puis, depuis un autre terminal (parce que React à bloqué le précédent)
+Puis, depuis l'intérieur du container Symfony
 ```shell
-docker exec symfony_docker symfony console doctrine:migrations:migrate
+cd project
+symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
 ```
 
