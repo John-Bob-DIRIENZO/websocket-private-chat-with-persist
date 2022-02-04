@@ -20,7 +20,12 @@ docker-compose up -d
 cd frontend
 npm install
 npm run start
-docker exec symfony_docker symfony console doctrine:fixtures:load
+```
+
+Puis, depuis un autre terminal (parce que React à bloqué le précédent)
+```shell
+docker exec symfony_docker symfony console doctrine:migrations:migrate
+symfony console doctrine:fixtures:load
 ```
 
 Rendez-vous ensuite sur http://localhost:8080 <br>
